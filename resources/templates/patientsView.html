@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template1">
+<head>
+<meta charset="utf-8">
+<title>List Of Patients</title>
+</head>
+<body>
+	<section layout:fragment="content">
+
+		<div class="container">
+			<div class="card">
+				<div class="card-header">List Patients</div>
+				<div class="card-body">
+					<div class="d-flex">
+						<div class="p-2">
+							<form method="get" th:action="@{listPatients}">
+								<label>Mot Clé</label> <input type="text" name="motCle"
+									th:value="${motCle}" />
+								<button class="btn btn-dark">Search</button>
+							</form>
+						</div>
+						<div class="p-2">
+							<a th:href="@{listPatients(sick=true)}">
+								<button class="btn btn-warning"><b>View Sick Patients</b> </button>
+							</a>
+						</div>
+						<div class="p-2">
+							<a th:href="@{listPatients(sick=false)}">
+								<button class="btn btn-warning"><b>View Non Sick Patients</b></button>
+							</a>
+						</div>
+						<div class="ml-auto p-2">
+							<a th:href="@{addPatient}">
+								<button class="btn btn-primary">Add Patient</button>
+							</a>
+						</div>
+					</div>
+					<table class="table table-bordered border-primary">
+						<tr>
+							<th>Id patient</th>
+							<th>Name patient</th>
+							<th>Date birth</th>
+							<th>Score</th>
+							<th>Sick</th>
+							<th>Actions</th>
+						</tr>
+						<tr th:each="p:${listPatients}">
+							<td th:text="${p.id}"></td>
+							<td th:text="${p.name}"></td>
+							<td th:text="${p.dateBirth}"></td>
+							<td th:text="${p.score}"></td>
+							<td th:text="${p.isSick}"></td>
+							<td><a
+								onclick="return confirm('Are you sure to delete this patient')"
+								class="btn btn-danger" th:href="@{deletePatient(id=${p.id})}">Delete</a>
+								<a class="btn btn-success"
+								th:href="@{getInfoPatient(id=${p.id})}">Edit</a></td>
+
+						</tr>
+					</table>
+					<ul class="nav nav-pills">
+						<li th:each="page, status:${pages}"><a
+							th:class="${status.index==currentPage?'btn btn-primary':'btn'}"
+							th:href="@{listPatients(page=${status.index})}" th:text="${status.index}"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

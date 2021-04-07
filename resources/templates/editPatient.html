@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="template1">
+    <head>
+        <link href="form_add_patient.css" rel="stylesheet" />
+        <meta charset="utf-8" />
+        <title>Edit Patient</title>
+    </head>
+    <body class="text-center">
+        <section layout:fragment="content">
+            <div class="formadd">
+                <form th:action="@{editPatient}" method="post" class="form-signin">
+                    <img class="mb-4" src="patient.png" alt="" width="90" height="90" />
+                    <h1 class="h3 mb-3 font-weight-normal alert alert-primary">Please Edit you patient's in formations</h1>
+                    <input type="number" name="id" th:value="${patientToEdit.id}" class="sr-only">
+                    <label for="patientName" class="sr-only">Patient's name</label>
+                    <input type="text" name="name" th:value="${patientToEdit.name}" class="form-control" placeholder="Patient's name" required autofocus /> 
+                    
+                    <label for="patientbirth" class="sr-only">Patient's birth day</label>
+                    <input type="date" name="dateBirth" th:value="${patientToEdit.dateBirth}"  class="form-control" placeholder="Patient's birth day" required autofocus /> 
+               
+                    <label for="patientscore" class="sr-only">Patient's name</label>
+                    <input type="number" name="score" th:value="${patientToEdit.score}" class="form-control" placeholder="Patient's score" required autofocus /> 
+                
+                    <div class="checkbox mb-3"><label>Is sick </label>
+                        <input type="checkbox" name="sick" th:checked=${patientToEdit.sick}>
+                    </div>
+                    
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Edit Patient</button>
+                </form>
+            </div>
+        </section>
+    </body>
+</html>

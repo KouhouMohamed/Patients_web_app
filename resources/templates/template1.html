@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="webjars/popper.js/1.14.3/umd/popper.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="/listPatients">Koh-Clinical</a>
+
+		<!-- Links -->
+		<ul class="ml-auto navbar-nav ">
+			<!-- Dropdown -->
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbardrop"
+				data-toggle="dropdown"> [UserName] </a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/profil">Profil</a> 
+					<a class="dropdown-item" th:href="@{logout}">Logout</a>
+				</div>
+			</li>
+		</ul>
+		
+	</nav>
+	<section layout:fragment="content"></section>
+</body>
+</html>
