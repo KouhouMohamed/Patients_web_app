@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http//www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="https//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
@@ -21,9 +22,12 @@
 			<!-- Dropdown -->
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="navbardrop"
-				data-toggle="dropdown"> [UserName] </a>
+				data-toggle="dropdown"> 
+				<span sec:authentication="name"></span>
+				 </a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="/profil">Profil</a> 
+					<a sec:authorize="!isAuthenticated()" class="dropdown-item" th:href="/login">Login</a>
 					<a class="dropdown-item" th:href="@{logout}">Logout</a>
 				</div>
 			</li>

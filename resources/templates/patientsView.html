@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http//www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		xmlns:sec="https//www.thymeleaf.org/thymeleaf-extras-springsecurity5"
 	layout:decorator="template1">
 <head>
 <meta charset="utf-8">
@@ -31,7 +32,7 @@
 								<button class="btn btn-warning"><b>View Non Sick Patients</b></button>
 							</a>
 						</div>
-						<div class="ml-auto p-2">
+						<div class="ml-auto p-2" sec:authorize="hasRole('ROLE_ADMIN')">
 							<a th:href="@{addPatient}">
 								<button class="btn btn-primary">Add Patient</button>
 							</a>
@@ -44,7 +45,7 @@
 							<th>Date birth</th>
 							<th>Score</th>
 							<th>Sick</th>
-							<th>Actions</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>
 						</tr>
 						<tr th:each="p:${listPatients}">
 							<td th:text="${p.id}"></td>
@@ -52,8 +53,8 @@
 							<td th:text="${p.dateBirth}"></td>
 							<td th:text="${p.score}"></td>
 							<td th:text="${p.isSick}"></td>
-							<td><a
-								onclick="return confirm('Are you sure to delete this patient')"
+							<td sec:authorize="hasRole('ROLE_ADMIN')">
+								<a onclick="return confirm('Are you sure to delete this patient')"
 								class="btn btn-danger" th:href="@{deletePatient(id=${p.id})}">Delete</a>
 								<a class="btn btn-success"
 								th:href="@{getInfoPatient(id=${p.id})}">Edit</a></td>
