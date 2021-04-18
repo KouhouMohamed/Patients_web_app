@@ -8,13 +8,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.kouhou.springMVC.entities.Patient;
+import com.kouhou.springMVC.entities.User;
 import com.kouhou.springMVC.repositories.PatientRepository;
+import com.kouhou.springMVC.repositories.UserRepository;
 
 @SpringBootApplication
 public class SpringMvcApplication implements CommandLineRunner {
 
 	@Autowired
 	private PatientRepository patientRepository;
+	
+	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringMvcApplication.class, args);
 	}
@@ -34,6 +39,8 @@ public class SpringMvcApplication implements CommandLineRunner {
 		patientRepository.save(new Patient(null, "AKKA", new Date(),200,true));
 		patientRepository.save(new Patient(null, "Ibrahim", new Date(),300,false));
 		patientRepository.save(new Patient(null, "Aicha", new Date(),400,true));
+		
+		
 	}
 
 }

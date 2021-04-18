@@ -28,11 +28,14 @@ public class PatientController {
 	@Autowired
 	private PatientRepository patientRepository;
 
+	@GetMapping(path="/")
+	public String indexPage() {
+		return "index";
+	}
 	
 	//function to view list of patients by page
 	@GetMapping(path = "/listPatients")
 	public String listPatients(Model model, @RequestParam(name="motCle", defaultValue = "") String motCle, @RequestParam(name="page", defaultValue = "0")int page, @RequestParam(name="size", defaultValue = "5")int sizePage, @RequestParam(name="sick", defaultValue = "") String sick) {
-
 		Page<Patient> pagePatients=null;
 		//We can seach by sick
 		//if not the sick variable equal to  ""

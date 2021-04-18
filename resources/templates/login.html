@@ -1,0 +1,55 @@
+
+<!doctype html>
+<html xmlns:th="http//www.thymeleaf.org"
+	 layout:decorator="template1">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="form_add_patient.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    <section layout:fragment="content">
+    <div class="container">
+  <div class="row">
+    <div class="col">
+      <form th:action="@{login}" method="post" class="form-signin">
+      <img class="mb-4" src="patient.png" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+	
+		<div th:if="${param.error}" class="card bg-danger">
+			<div class="text-center text-white">
+				Bad Credentials
+			</div>
+	  </div>
+			<br>	
+      <label for="inputName" class="sr-only">UserName</label>
+      <input type="text" name="username"id="inputName" class="form-control" placeholder="UserName" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted">&copy; ENSET-Media 2020-2021</p>
+    </form>
+    </div>
+    <div class="col mt-5">
+     <img  src="home.jpg" alt="" width=100% height=100%>
+    </div>
+  </div>
+    
+    </section>
+  </body>
+</html>

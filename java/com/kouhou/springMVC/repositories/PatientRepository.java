@@ -1,6 +1,5 @@
 package com.kouhou.springMVC.repositories;
 import java.util.Date;
-import java.util.List;
 
 import javax.transaction.Transactional;
 
